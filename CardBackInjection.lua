@@ -6,7 +6,7 @@
 ----------------------------------------------
 ------------MOD CODE -------------------------
 
-function SMODS.INIT.CardBackInjection()
+function InjectCardBack()
 
     G.SETTINGS.GRAPHICS.texture_scaling = G.SETTINGS.GRAPHICS.texture_scaling or 2
     --Set fiter to linear interpolation and nearest, best for pixel art
@@ -52,7 +52,9 @@ function SMODS.INIT.CardBackInjection()
     end
 
     -- Create a canvas to hold the combined image
-    local totalHeight = baseImage_height + math.floor((#all_b_images) / 7) * baseImage_height / 7 -- base image height + number of 'b_' images * their height
+    local totalHeight = baseImage_height + (math.floor((#all_b_images - 1) / 7) + 1) * math.floor(baseImage_height / 5) -- base image height + number of 'b_' images * their height
+    --sendDebugMessage(baseImage_width)
+    --sendDebugMessage(totalHeight)
     local centers_canvas = love.graphics.newCanvas(baseImage_width, totalHeight, {mipmaps = "auto",dpiscale=scale})
     love.graphics.clear(1,1,1,0)
     love.graphics.setCanvas(centers_canvas)
@@ -60,13 +62,16 @@ function SMODS.INIT.CardBackInjection()
     -- Put the OG enhancer on there first
     love.graphics.draw(baseImage, 0, 0)
     local canvas_x = 0
-    local canvas_y = baseImage:getHeight()
+    local canvas_y = baseImage_height
     
     -- Draw the base image and then append all 'b_' images
     for _, image in ipairs(all_b_images) do
-        love.graphics.draw(image, 0, 0)
+        --love.graphics.draw(image, 0, 0)
         love.graphics.draw(image, canvas_x, canvas_y)
-        canvas_x = (canvas_x + image:getWidth()) % baseImage:getWidth()
+        sendDebugMessage("image found and drawn at: ")
+        sendDebugMessage(canvas_x)
+        sendDebugMessage(canvas_y)
+        canvas_x = (canvas_x + image:getWidth()) % baseImage_width
         if canvas_x == 0 then canvas_y = canvas_y + image:getHeight() end
     end
 
@@ -90,6 +95,15 @@ function SMODS.INIT.CardBackInjection()
 
     -- Return the lookup table for position
     return lookup
+
+end
+
+function SMODS.INIT.CardBackInjection()
+
+    G.cardback_info = InjectCardBack()
+    sendDebugMessage("Card Back Injection Completed! ")
+    --sendDebugMessage(G.cardback_info["xplaying"].x)
+    --sendDebugMessage(G.cardback_info["xplaying"].y)
 
 end
 
