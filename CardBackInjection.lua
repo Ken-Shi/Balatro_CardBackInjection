@@ -1,8 +1,8 @@
 --- STEAMODDED HEADER
---- MOD_NAME: Card Back Injection
+--- MOD_NAME: Card Back Injection Ver 1.0.0
 --- MOD_ID: CardBackInjection
 --- MOD_AUTHOR: [Kenny Stone, JoStro]
---- MOD_DESCRIPTION: trying to change card backs
+--- MOD_DESCRIPTION: systematically loads all the card back files into the system
 ----------------------------------------------
 ------------MOD CODE -------------------------
 
