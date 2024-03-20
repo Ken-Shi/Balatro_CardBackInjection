@@ -4,7 +4,9 @@ A Balatro mod dedicated to adding customized card backs to the game in ease. Eve
 # Installation
 1. Make sure you have installed [Steamodded](https://github.com/Steamopollys/Steamodded) as it is used for the loading of this module.
 2. Download the `assets` and `CardBackInjection.lua` into the mods folder of Steamodded and you are good to go!
+
 Note: A current issue makes it so that if you don't see the right resolution, turn off your pixel smoothing and restart the game. I am working on enabling pixel smoothing right now!
+
 Note2: Also, please make all mod exist in one folder where this file is for now if you have multiple mods. Solution is also on the way!
 
 # Usage
