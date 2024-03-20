@@ -5,7 +5,7 @@ Version 2.0 storms away all of the known bug and made this extremely robust!!!
 
 # Installation
 1. Make sure you have installed [Steamodded](https://github.com/Steamopollys/Steamodded) as it is used for the loading of this module.
-2. Download the folder `CardBackInjection` into the mods folder of Steamodded and you are good to go!
+2. Download the folder `CardBackInjection` into the mods folder of Steamodded (you can also download the .zip file and unzip there directly) and you are good to go!
 
 Sanity Check: The path should look something like ".../Mods/CardBackInjection"
 
