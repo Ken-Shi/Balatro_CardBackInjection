@@ -1,5 +1,5 @@
 --- STEAMODDED HEADER
---- MOD_NAME: Card Back Injection Ver 2.0.0
+--- MOD_NAME: Card Back Injection Ver 2.1.0
 --- MOD_ID: CardBackInjection
 --- MOD_AUTHOR: [Kenny Stone]
 --- MOD_DESCRIPTION: systematically loads all the card back files into the system
@@ -29,7 +29,7 @@ function CreateCardBackCollection(scale)
     -- Not loading it from original game file in case anything bad happen
     local baseImagePath = cbi_mod_path .. "CardBackInjection/assets/" .. scale .. "x/OGEnhancers.png"
 
-    local all_mod_directories = love.filesystem.getDirectoryItems(cbi_mod_path)
+    local all_mod_directories = NFS.getDirectoryItems(cbi_mod_path)
 
     -- Load the base image
     local baseImage = love.graphics.newImage(baseImagePath)
@@ -42,10 +42,10 @@ function CreateCardBackCollection(scale)
 
     -- Load all 'b_' prefixed images
     for _, item in ipairs(all_mod_directories) do
-        local info = love.filesystem.getInfo(cbi_mod_path..item)
+        local info = NFS.getInfo(cbi_mod_path..item)
         if info and info.type == "directory" and item ~= "assets" then
             local d_path = cbi_mod_path .. "/" .. item .. "/assets/" .. scale .. "x/"
-            all_asset_files = love.filesystem.getDirectoryItems(d_path)
+            all_asset_files = NFS.getDirectoryItems(d_path)
             for _, file in ipairs(all_asset_files) do
                 if file:sub(1, 2) == "b_" and file:sub(-4) == ".png" then
                     local b_imagePath = d_path .. file
@@ -59,7 +59,7 @@ function CreateCardBackCollection(scale)
                 end
             end
         elseif info and info.type == "directory" and item == "assets" then
-            all_asset_files = love.filesystem.getDirectoryItems(asset_directory)
+            all_asset_files = NFS.getDirectoryItems(asset_directory)
             for _, file in ipairs(all_asset_files) do
                 if file:sub(1, 2) == "b_" and file:sub(-4) == ".png" then
                     local b_imagePath = asset_directory .. file
@@ -114,7 +114,7 @@ function ReadCardBackInfo(scale)
     local scale = scale or 2
     local cbi_mod_path = 'Mods/'
     local asset_directory = cbi_mod_path .. "assets/" .. scale .. "x/"
-    local all_mod_directories = love.filesystem.getDirectoryItems(cbi_mod_path)
+    local all_mod_directories = NFS.getDirectoryItems(cbi_mod_path)
 
     local lookup = {}
     local index_x = 0
@@ -122,10 +122,10 @@ function ReadCardBackInfo(scale)
 
     -- Load all 'b_' prefixed images
     for _, item in ipairs(all_mod_directories) do
-        local info = love.filesystem.getInfo(cbi_mod_path..item)
+        local info = NFS.getInfo(cbi_mod_path..item)
         if info and info.type == "directory" and item ~= "assets" then
             local d_path = cbi_mod_path .. "/" .. item .. "/assets/" .. scale .. "x/"
-            all_asset_files = love.filesystem.getDirectoryItems(d_path)
+            all_asset_files = NFS.getDirectoryItems(d_path)
             for _, file in ipairs(all_asset_files) do
                 if file:sub(1, 2) == "b_" and file:sub(-4) == ".png" then
                     local b_image_name = string.sub(file, 3, -5)
@@ -136,7 +136,7 @@ function ReadCardBackInfo(scale)
                 end
             end
         elseif info and info.type == "directory" and item == "assets" then
-            all_asset_files = love.filesystem.getDirectoryItems(asset_directory)
+            all_asset_files = NFS.getDirectoryItems(asset_directory)
             for _, file in ipairs(all_asset_files) do
                 if file:sub(1, 2) == "b_" and file:sub(-4) == ".png" then
                     local b_image_name = string.sub(file, 3, -5)
