@@ -1,9 +1,9 @@
 {
     "name": "CardBackInjection",
-    "version_number": "2.1.0",
+    "version_number": "2.1.1",
     "website_url": "https://github.com/Ken-Shi/Balatro_CardBackInjection",
     "description": "A Balatro mod dedicated to adding customized card backs to the game in ease. Every mod that follows the same convention will be compatible with each other. ",
     "dependencies": [
-        "Steamopollys-Steamodded-0.8.1"
+        "Steamopollys-Steamodded-0.8.2"
     ]
 }
